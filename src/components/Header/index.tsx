@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-const icon = require("../../assets/imgs/icon.png");
+const icon = require("../../assets/imgs/swipe.png");
 
 interface HeaderProps {
     title: string;

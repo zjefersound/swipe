@@ -6,8 +6,8 @@ import fonts from '../../configs/fonts';
 const styles = StyleSheet.create({
     container: {
         marginTop: Platform.OS === 'ios'? 40 : 0,
-        padding: 12,
-        borderBottomColor: '#8888',
+        padding: 16,
+        borderBottomColor: colors.neutral,
         borderBottomWidth: 1,
         backgroundColor: colors.secondary,
     },
@@ -16,15 +16,16 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     icon: {
-        width: 24,
-        height: 24,
+        width: 28,
+        height: 28,
         resizeMode: 'contain',
     },
     title: {
-        fontSize: 24,
-        fontFamily: fonts.rubik,
-        fontWeight: 'bold',
-        color: colors.mainText
+        fontSize: 20,
+        marginLeft: 12,
+        fontFamily: fonts.roboto,
+        fontWeight: '700',
+        color: colors.primary
 
     }
 });

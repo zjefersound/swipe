@@ -9,6 +9,8 @@ import {
 import styles from './styles';
 import Author from '../Author';
 import Comment from '../Comment';
+import AddComment from '../AddComment';
+import PostInteraction from '../PostInteraction';
 
 interface CommentProps {
     nickname: string;
@@ -16,20 +18,25 @@ interface CommentProps {
 }
 
 interface PostProps{
-    image: File;
+    nickname: string;
+    email: string;
+    date?: Date;
+    image: ImageProps;
     commentList: CommentProps[];
 }
 
-const Post: React.FC<PostProps> = ({ image, commentList }) => {
+const Post: React.FC<PostProps> = ({ image, commentList, email, nickname }) => {
 
     return (
         <View style = { styles.container }>
-            <Author nickname = 'zjefersound' email = 'jefeacdc@gmail.com' />
+            <Author nickname = { nickname } email = { email } />
             <Image 
                 source = { image } 
                 style = { styles.image}
             />
-            <Comment comments = {commentList}/>
+            <PostInteraction />
+            <Comment comments = { commentList }/>
+            <AddComment nickname = { nickname } email = { email } />
         </View>
     );
 }

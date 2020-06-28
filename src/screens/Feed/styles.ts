@@ -11,18 +11,10 @@ const styles = StyleSheet.create({
         backgroundColor: colors.secondary,
     },
     avatar: {
-        width: 24,
-        height: 24,
         borderRadius: 12,
-        backgroundColor: '#8888',
+        backgroundColor: colors.neutral,
+        resizeMode: 'contain'
     },
-    nickname: {
-        color: colors.mainText,
-        fontFamily: fonts.rubikBold,
-        fontWeight: 'bold',
-        marginLeft: 12,
-        fontSize: 16,
-    }
 });
 
 export default styles;

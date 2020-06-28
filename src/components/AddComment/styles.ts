@@ -11,10 +11,36 @@ const styles = StyleSheet.create({
         backgroundColor: colors.secondary,
     },
     avatar: {
-        width: 24,
-        height: 24,
         borderRadius: 12,
-        backgroundColor: '#8888',
+        backgroundColor: colors.neutral,
+        resizeMode: 'contain'
+    },
+    addComment: {
+        marginLeft: 12,
+        fontFamily: fonts.roboto,
+        color: colors.mainText
+    },
+    addCommentIcon: {
+        marginLeft: 12,
+        color: colors.mainText,
+    },
+    editCommentArea: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderColor: colors.neutral,
+        backgroundColor: colors.secondary2,
+    },
+    cancelEditComment: {
+        margin: 12,
+        color: colors.mainText,
+    },
+    inputText: {
+        flex: 1,
+        paddingHorizontal: 12,
+        color: colors.mainText,
+        fontFamily: fonts.roboto,
+        fontSize: 16
     },
 });
 

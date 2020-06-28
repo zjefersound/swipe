@@ -6,12 +6,9 @@ import fonts from '../../configs/fonts';
 const styles = StyleSheet.create({
     container: {
         marginTop: Platform.OS === 'ios'? 40 : 0,
-        borderBottomColor: '#8888',
+        borderBottomColor: colors.neutral,
         borderBottomWidth: 1,
         backgroundColor: colors.secondary
-    },
-    header: {
-        
     },
     image: {
         width: Dimensions.get('window').width,

@@ -41,14 +41,14 @@ const Comment: React.FC<CommentList> = ({ comments }) => {
     return (
         <>
             <View style = { styles.container }> 
-                {list}
                 <TouchableWithoutFeedback 
                     onPress = { () => setShowAll( !showAll )}
-                >
+                    >
                     <Text style = { styles.showAll }>
                         {showAll ? 'Mostrar menos...' : 'Mostrar mais...'}
                     </Text>
                 </TouchableWithoutFeedback>
+                {list}
             </View>
         </>
     ); 
