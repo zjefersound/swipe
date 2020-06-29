@@ -12,7 +12,8 @@ interface HeaderProps {
     title: string;
 }
 const Header: React.FC = () => {
-    return(
+    
+    return (
         <View style = { styles.container }>
             <View style = { styles.containerRow }>
                 <Image source = {icon} style = { styles.icon }/>

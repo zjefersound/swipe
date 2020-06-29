@@ -1,5 +1,5 @@
 export default {
-    primary: '#EB8D12',
+    primary: '#222',
     secondary: '#FFF',
     secondary2: '#EEE',
     secondary3: '#888',
@@ -11,7 +11,8 @@ export default {
     danger: '#F00',
     success: '#0F0',
     neutral: '#8885',
-
+    
+    // primary: '#EB8D12',
     // secondary: '#111',
     // secondary2: '#222',
     // secondary3: '#333',

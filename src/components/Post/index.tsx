@@ -18,6 +18,7 @@ interface CommentProps {
 }
 
 interface PostProps{
+    id: number;
     nickname: string;
     email: string;
     date?: Date;
