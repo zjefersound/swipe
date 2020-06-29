@@ -1,14 +1,15 @@
 import React from 'react';
 import {
+  View,
   StatusBar,
   ScrollView
 } from 'react-native';
 
-import Feed from './src/screens/Feed';
+import Routes from './src/routes';
 
 const App = () => {
   return (
-      <Feed />
+      <Routes />
   );
 };
 

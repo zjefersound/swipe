@@ -1,13 +1,12 @@
-import React from 'react';
- 
+import React from 'react'; 
 import { NavigationContainer} from '@react-navigation/native';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import Feather from 'react-native-vector-icons/Feather';
 
+import colors from './configs/colors';
 import Feed from './screens/Feed';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AddPost from './screens/AddPost';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,16 +16,40 @@ const Routes = () => {
             <Tab.Navigator
                 initialRouteName="Feed"
                 tabBarOptions={{
-                    activeTintColor: '#e91e63',
+                    activeTintColor: colors.primary,
+                    showLabel: false,
+                    tabStyle: {
+                        backgroundColor: colors.secondary
+                    }
                 }}
-                >
+            >
                 <Tab.Screen
                     name="Feed"
                     component={Feed}
                     options={{
                         tabBarLabel: 'Home',
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="home" color={color} size={size} />
+                        tabBarIcon: ({ color }) => (
+                            <Feather name="home" color={color} size={28} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name="Search"
+                    component={Feed}
+                    options={{
+                        tabBarLabel: 'Add',
+                        tabBarIcon: ({ color }) => (
+                            <Feather name="search" color={color} size={28} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name="AddPost"
+                    component={AddPost}
+                    options={{
+                        tabBarLabel: 'AddPost',
+                        tabBarIcon: ({ color }) => (
+                            <Feather name="plus-square" color={color} size={28} />
                         ),
                     }}
                 />
@@ -34,9 +57,9 @@ const Routes = () => {
                     name="Notifications"
                     component={Feed}
                     options={{
-                        tabBarLabel: 'Updates',
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="bell" color={color} size={size} />
+                        tabBarLabel: 'Notifications',
+                        tabBarIcon: ({ color }) => (
+                            <Feather name="heart" color={color} size={28} />
                         ),
                     }}
                 />
@@ -45,8 +68,8 @@ const Routes = () => {
                     component={Feed}
                     options={{
                         tabBarLabel: 'Profile',
-                        tabBarIcon: ({ color, size }) => (
-                            <MaterialCommunityIcons name="account" color={color} size={size} />
+                        tabBarIcon: ({ color }) => (
+                            <Feather name="circle" color={color} size={28} />
                         ),
                     }}
                 />
