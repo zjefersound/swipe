@@ -12,15 +12,17 @@ const Tab = createBottomTabNavigator();
 
 const Routes = () => {
     return (
-        <NavigationContainer>
+        <NavigationContainer >
             <Tab.Navigator
                 initialRouteName="Feed"
                 tabBarOptions={{
                     activeTintColor: colors.primary,
                     showLabel: false,
                     tabStyle: {
+                        borderColor: colors.secondary3,
                         backgroundColor: colors.secondary
-                    }
+                    },
+                    inactiveTintColor: colors.subText,
                 }}
             >
                 <Tab.Screen

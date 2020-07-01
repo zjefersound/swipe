@@ -6,6 +6,7 @@ import {
   Dimensions,
   Platform,
   ScrollView,
+  SafeAreaView,
   Alert,
   TouchableOpacity,
   TextInput,
@@ -18,6 +19,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import styles from './styles';
 import Header from '../../components/Header';
+import colors from '../../configs/colors';
 
 interface AddPostProps {
   props: any;
@@ -55,9 +57,6 @@ const AddPost: React.FC<AddPostProps> = ({props}) => {
       title: 'Escolha a imagem',
       maxHeight: Dimensions.get('window').width,
       maxWidth: Dimensions.get('window').width,
-      // customButtons: [
-      //   { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
-      // ],
       storageOptions: {
         skipBackup: true,
         path: 'images',
@@ -78,26 +77,69 @@ const AddPost: React.FC<AddPostProps> = ({props}) => {
   }
 
   return (
-    <ScrollView>
-      <Header title = 'Criar post'/>
-      <View style={styles.container}>
+    <>
+      <ScrollView style = { styles.background }>
+        <Header title = 'Criar post'/>
+        <View style={styles.container}>
+          <TouchableOpacity 
+            onPress = { chooseFile }
+          >
+            {image.data === ''
+              ? (
+                <View style = { styles.imageContainer }>
+                  <Feather 
+                    name = 'plus' 
+                    size = {100} 
+                    color = {colors.secondary} 
+                  />
+                </View>
+              ) 
+              : (
+                <Image
+                  source={{ uri: image.uri }}
+                  style = { styles.imageContainer }
+                />
+              )
+            }
+          </TouchableOpacity>
+          <TouchableOpacity 
+            onPress = { chooseFile }
+            style = { styles.buttonAddImage }
+          >
+            <Feather 
+              name = 'camera' 
+              size = {20}
+              style = { styles.buttonAddImageIcon }
+            />
+            <Text style = { styles.buttonAddImageText }>Adicione a imagem</Text>
+          </TouchableOpacity>
+          <SafeAreaView style = { styles.inputTextContainer }>
+              <TextInput 
+                value = { comment }
+                onChangeText = { text => setComment(text) }
+                multiline
+                style = { styles.inputText } 
+                placeholderTextColor = { colors.subText }
+                placeholder = 'Digite a legenda do seu post...'
+              />
+          </SafeAreaView>
+        </View>
+      </ScrollView>
+      <View style = { styles.buttonSaveContainer }>
         <TouchableOpacity 
-          onPress = { chooseFile }
+          onPress = { save }
+          style = { styles.buttonSave }
+          activeOpacity = {0.8}
         >
-        <Image
-          source={{ uri: image.uri }}
-          style = { styles.imageContainer }
-        />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          onPress = { chooseFile }
-          style = { styles.buttonAddImage }
-        >
-          <Feather name = 'camera' size = {20}/>
-          <Text style = { styles.buttonAddImageText }>Adicione a imagem</Text>
+          <Feather 
+            name = 'check' 
+            size = {20} 
+            style = { styles.buttonSaveIcon } 
+          />
+          <Text style = { styles.buttonSaveText }>Publicar</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </>
   );
 
 }
