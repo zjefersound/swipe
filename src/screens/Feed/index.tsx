@@ -67,7 +67,7 @@ const Feed: React.FC = () => {
                 backgroundColor = {colors.secondary} 
             />
             <View>
-                <Header />
+                <Header title = 'Swipeit' />
                 <FlatList 
                     data = { posts } 
                     keyExtractor = {post => String(post.id)}
