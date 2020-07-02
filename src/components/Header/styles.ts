@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
         width: 28,
         height: 28,
         resizeMode: 'contain',
+        marginRight: 12,
     },
     title: {
         fontSize: 20,
-        marginLeft: 12,
         fontFamily: fonts.roboto,
         fontWeight: '700',
         color: colors.primary

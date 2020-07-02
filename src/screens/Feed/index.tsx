@@ -66,7 +66,7 @@ const Feed: React.FC = () => {
                 barStyle = { colors.secondary > "#888" ? "dark-content" : "light-content" } 
                 backgroundColor = {colors.secondary} 
             />
-            <View>
+            <View style = { styles.background }>
                 <Header title = 'Swipeit' />
                 <FlatList 
                     data = { posts } 

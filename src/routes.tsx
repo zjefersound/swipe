@@ -7,6 +7,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import colors from './configs/colors';
 import Feed from './screens/Feed';
 import AddPost from './screens/AddPost';
+import Profile from './screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,10 +17,10 @@ const Routes = () => {
             <Tab.Navigator
                 initialRouteName="Feed"
                 tabBarOptions={{
+                    
                     activeTintColor: colors.primary,
                     showLabel: false,
                     tabStyle: {
-                        borderColor: colors.secondary3,
                         backgroundColor: colors.secondary
                     },
                     inactiveTintColor: colors.subText,
@@ -67,7 +68,7 @@ const Routes = () => {
                 />
                 <Tab.Screen
                     name="Profile"
-                    component={Feed}
+                    component={Profile}
                     options={{
                         tabBarLabel: 'Profile',
                         tabBarIcon: ({ color }) => (

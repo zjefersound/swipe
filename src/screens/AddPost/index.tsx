@@ -78,8 +78,8 @@ const AddPost: React.FC<AddPostProps> = ({props}) => {
 
   return (
     <>
+      <Header title = 'Criar post'/>
       <ScrollView style = { styles.background }>
-        <Header title = 'Criar post'/>
         <View style={styles.container}>
           <TouchableOpacity 
             onPress = { chooseFile }

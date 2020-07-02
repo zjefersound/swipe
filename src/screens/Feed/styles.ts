@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
         backgroundColor: colors.neutral,
         resizeMode: 'contain'
     },
+    background: {
+        flex: 1,
+        backgroundColor: colors.secondary,
+    }
 });
 
 export default styles;

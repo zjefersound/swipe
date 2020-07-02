@@ -9,14 +9,17 @@ import styles from './styles';
 const icon = require("../../assets/imgs/swipe.png");
 
 interface HeaderProps {
+    removeIcon?: boolean;
     title: string;
 }
-const Header: React.FC<HeaderProps> = ({title}) => {
+const Header: React.FC<HeaderProps> = ({removeIcon = false, title}) => {
     
     return (
         <View style = { styles.container }>
             <View style = { styles.containerRow }>
-                <Image source = {icon} style = { styles.icon }/>
+                {!removeIcon &&
+                    <Image source = {icon} style = { styles.icon }/>
+                }
                 <Text style = { styles.title }>{title}</Text>
             </View>
         </View>
