@@ -4,12 +4,19 @@ import {
   StatusBar,
   ScrollView
 } from 'react-native';
+import colors from './src/configs/colors';
 
 import Routes from './src/routes';
 
 const App = () => {
   return (
-      <Routes />
+      <>
+        <StatusBar 
+          barStyle = { colors.secondary > "#888" ? "dark-content" : "light-content" } 
+          backgroundColor = {colors.secondary} 
+        />
+        <Routes />
+      </>
   );
 };
 

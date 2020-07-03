@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
     View,
+    ScrollView,
     Text,
     TouchableOpacity
 } from 'react-native';
@@ -63,10 +64,70 @@ const Profile: React.FC = () => {
                     </Text>
                 </View>
 
-                <View style = { styles.posts }>
+                <ScrollView>
+                    <View style = { styles.postList }>
+                        <View style = { styles.postImage }>
 
-                </View>
+                        </View>
+                        <View style = { styles.postImage }>
 
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                        <View style = { styles.postImage }>
+
+                        </View>
+                    </View>
+                </ScrollView>
             </View>
         </>
     );

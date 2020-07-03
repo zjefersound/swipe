@@ -25,7 +25,7 @@ const darkTheme = {
 
 const colors = {
     ...lightTheme,
-    //...darkTheme
+    ...darkTheme
 }
 
 export default colors;

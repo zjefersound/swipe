@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import colors from '../../configs/colors';
 import fonts from '../../configs/fonts';
@@ -63,8 +63,16 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: colors.subText
     },
-    posts: {
-
+    postList: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    postImage: {
+        width: Dimensions.get('window').width / 3,
+        height: Dimensions.get('window').width / 3,
+        backgroundColor: colors.secondary2,
+        borderWidth: 1,
+        borderColor: colors.secondary
     }
     
 });
