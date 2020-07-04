@@ -63,6 +63,36 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: colors.subText
     },
+    //BOTOES PARA EDITAR PERFIL 
+    buttonsBar: {
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        marginBottom: 8,
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+    buttonAction: {
+        backgroundColor: colors.secondary2,
+        height: 32,
+        borderRadius: 16,
+        paddingHorizontal: 16,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 12
+    },
+    buttonEditText: {
+        color: colors.primary,
+        fontSize: 14,
+    },
+    buttonLogoutText: {
+        color: colors.danger,
+        fontSize: 14,
+    },
+    buttonActionLabel: {
+        paddingLeft: 12
+    }, 
+    //TIMELINE DA CONTA
     postList: {
         flexDirection: 'row',
         flexWrap: 'wrap'
@@ -73,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.secondary2,
         borderWidth: 1,
         borderColor: colors.secondary
-    }
+    },
     
 });
 

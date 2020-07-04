@@ -7,12 +7,16 @@ import {
 } from 'react-native';
 import Gravatar from '@krosben/react-native-gravatar';
 
+import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import Header from '../../components/Header';
 
 const Profile: React.FC = () => {
     const logout = () => {
-
+        console.log('chorou');
+    }
+    const edit = () => {
+        console.log('editou');
     }
 
     const gravatarOptions = {
@@ -22,7 +26,7 @@ const Profile: React.FC = () => {
 
     return (
         <>
-            <Header removeIcon title = 'zjefersound'/>
+            <Header removeIcon title = 'zjefersound' menuFunction = { () => { console.log('vapo vapo')}}/>
             <View style = { styles.container }>
                 <View style = { styles.headerInfo }>
                     <View style = { styles.avatar }>
@@ -57,11 +61,39 @@ const Profile: React.FC = () => {
                         </View>
                     </View>
                 </View>
+
                 <View style = { styles.textInfo }>
                     <Text style = { styles.name }>Jeferson Souza</Text>
                     <Text style = { styles.description }>
                         asdsadasd sad asd sad sa sadas das dsad sad sad sadsa dsa dsadas sa
                     </Text>
+                </View>
+                
+                <View style = { styles.buttonsBar }>
+                    <TouchableOpacity onPress = { edit } activeOpacity = {0.7} >
+                        <View style = { styles.buttonAction }>
+                            <Feather 
+                                name = 'plus' 
+                                size = {14} 
+                                style = { styles.buttonEditText }
+                            />
+                            <Text style = { [styles.buttonActionLabel, styles.buttonEditText] }>
+                                Editar perfil
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress = { logout } activeOpacity = {0.7}>
+                        <View style = { styles.buttonAction }>
+                            <Feather 
+                                name = 'log-out' 
+                                size = {14}
+                                style = { styles.buttonLogoutText } 
+                            />
+                            <Text style = { [styles.buttonActionLabel, styles.buttonLogoutText] }>
+                                Log out
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
                 <ScrollView>

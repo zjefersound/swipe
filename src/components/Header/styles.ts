@@ -7,9 +7,12 @@ const styles = StyleSheet.create({
     container: {
         marginTop: Platform.OS === 'ios'? 40 : 0,
         padding: 16,
+        flexDirection: 'row',
         borderBottomColor: colors.neutral,
         borderBottomWidth: 1,
         backgroundColor: colors.secondary,
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     containerRow: {
         flexDirection: 'row',
@@ -20,6 +23,9 @@ const styles = StyleSheet.create({
         height: 28,
         resizeMode: 'contain',
         marginRight: 12,
+    },
+    iconMenu: {
+        color: colors.primary,
     },
     title: {
         fontSize: 20,
