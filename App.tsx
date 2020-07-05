@@ -7,6 +7,7 @@ import {
 import colors from './src/configs/colors';
 
 import Routes from './src/routes';
+import Login from './src/screens/Login';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
           barStyle = { colors.secondary > "#888" ? "dark-content" : "light-content" } 
           backgroundColor = {colors.secondary} 
         />
-        <Routes />
+        <Routes />   
       </>
   );
 };

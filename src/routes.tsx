@@ -1,6 +1,7 @@
 import React from 'react'; 
-import { NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -8,11 +9,23 @@ import colors from './configs/colors';
 import Feed from './screens/Feed';
 import AddPost from './screens/AddPost';
 import Profile from './screens/Profile';
+import Login from './screens/Login';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+const LoginOrProfileScreen = () => {
+    return (
+        <Stack.Navigator headerMode = 'none'
+            initialRouteName = 'Login'>
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+    );
+}
 
 const Routes = () => {
     return (
+        <>
         <NavigationContainer >
             <Tab.Navigator
                 initialRouteName="Feed"
@@ -68,7 +81,7 @@ const Routes = () => {
                 />
                 <Tab.Screen
                     name="Profile"
-                    component={Profile}
+                    component={LoginOrProfileScreen}
                     options={{
                         tabBarLabel: 'Profile',
                         tabBarIcon: ({ color }) => (
@@ -76,8 +89,12 @@ const Routes = () => {
                         ),
                     }}
                 />
+                
             </Tab.Navigator>
         </NavigationContainer>
+
+        </>
     );
 }
+
 export default Routes;

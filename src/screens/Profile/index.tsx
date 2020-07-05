@@ -11,9 +11,14 @@ import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import Header from '../../components/Header';
 
-const Profile: React.FC = () => {
+interface ProfileProps {
+    navigation: any;
+}
+
+const Profile: React.FC<ProfileProps> = (props) => {
     const logout = () => {
         console.log('chorou');
+        props.navigation.navigate('Login');
     }
     const edit = () => {
         console.log('editou');
