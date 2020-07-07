@@ -10,18 +10,31 @@ import Feed from './screens/Feed';
 import AddPost from './screens/AddPost';
 import Profile from './screens/Profile';
 import Login from './screens/Login';
+import Register from './screens/Register';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+
+const LoginOrRegisterScreen = () => {
+    return (
+        <Stack.Navigator headerMode = 'none'
+            initialRouteName = 'Login'>
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+    );
+}
+
 const LoginOrProfileScreen = () => {
     return (
         <Stack.Navigator headerMode = 'none'
             initialRouteName = 'Login'>
             <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Login" component={LoginOrRegisterScreen} />
         </Stack.Navigator>
     );
 }
+
 
 const Routes = () => {
     return (
@@ -71,7 +84,7 @@ const Routes = () => {
                 />
                 <Tab.Screen
                     name="Notifications"
-                    component={Feed}
+                    component={Register}
                     options={{
                         tabBarLabel: 'Notifications',
                         tabBarIcon: ({ color }) => (

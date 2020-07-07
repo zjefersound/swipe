@@ -5,7 +5,6 @@ import {
     TextInput,
     TouchableOpacity,
     Text,
-
 } from 'react-native';
 
 import Feather from 'react-native-vector-icons/Feather';
@@ -20,15 +19,13 @@ interface LoginProps {
     navigation?: any;
 }
 
-const Login: React.FC<LoginProps> = ( props ) => {
+const Register: React.FC<LoginProps> = ( props ) => {
+    const [ name, setName ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
 
     const login = () => {
         props.navigation.navigate('Profile');
-    }
-    const register = () => {
-        props.navigation.navigate('Register');
     }
 
     return (
@@ -36,9 +33,15 @@ const Login: React.FC<LoginProps> = ( props ) => {
             <Image source = { icon } style = { styles.icon } />
             <Text style = { styles.iconLabel }>Swipeit</Text>
             <AuthInput 
+                name = 'user'
+                placeholder = 'Nome'  
+                autoFocus
+                value = { name }
+                onChangeText = { text => setName(text)}
+            />
+            <AuthInput 
                 name = 'mail'
                 placeholder = 'Email'  
-                autoFocus
                 keyboardType = 'email-address'
                 value = { email }
                 onChangeText = { text => setEmail(text)}
@@ -60,10 +63,7 @@ const Login: React.FC<LoginProps> = ( props ) => {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity
-                activeOpacity = {0.7}
-                onPress = { register }
-            >
+            <TouchableOpacity>
                 <Text style = { styles.register }>
                     Nao tem conta? <Text style = { styles.registerColor }>
                         Cadastre-se </Text>
@@ -73,4 +73,4 @@ const Login: React.FC<LoginProps> = ( props ) => {
     );
 }
 
-export default Login;
+export default Register;
