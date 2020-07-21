@@ -15,6 +15,73 @@ import Register from './screens/Register';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+const AppScreen = ( ) => {
+    return (
+        <Tab.Navigator
+            initialRouteName="Feed"
+            tabBarOptions={{
+                
+                activeTintColor: colors.primary,
+                showLabel: false,
+                tabStyle: {
+                    backgroundColor: colors.secondary
+                },
+                inactiveTintColor: colors.subText,
+            }}
+        >
+            <Tab.Screen
+                name="Feed"
+                component={Feed}
+                options={{
+                    tabBarLabel: 'Home',
+                    tabBarIcon: ({ color }) => (
+                        <Feather name="home" color={color} size={28} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Search"
+                component={Feed}
+                options={{
+                    tabBarLabel: 'Add',
+                    tabBarIcon: ({ color }) => (
+                        <Feather name="search" color={color} size={28} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="AddPost"
+                component={AddPost}
+                options={{
+                    tabBarLabel: 'AddPost',
+                    tabBarIcon: ({ color }) => (
+                        <Feather name="plus-square" color={color} size={28} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Notifications"
+                component={Feed}
+                options={{
+                    tabBarLabel: 'Notifications',
+                    tabBarIcon: ({ color }) => (
+                        <Feather name="heart" color={color} size={28} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    tabBarLabel: 'Profile',
+                    tabBarIcon: ({ color }) => (
+                        <Feather name="circle" color={color} size={28} />
+                    ),
+                }}
+            /> 
+        </Tab.Navigator>
+    );
+}
 const LoginOrRegisterScreen = () => {
     return (
         <Stack.Navigator headerMode = 'none'
@@ -25,87 +92,16 @@ const LoginOrRegisterScreen = () => {
     );
 }
 
-const LoginOrProfileScreen = () => {
-    return (
-        <Stack.Navigator headerMode = 'none'
-            initialRouteName = 'Login'>
-            <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Login" component={LoginOrRegisterScreen} />
-        </Stack.Navigator>
-    );
-}
-
-
 const Routes = () => {
     return (
         <>
-        <NavigationContainer >
-            <Tab.Navigator
-                initialRouteName="Feed"
-                tabBarOptions={{
-                    
-                    activeTintColor: colors.primary,
-                    showLabel: false,
-                    tabStyle: {
-                        backgroundColor: colors.secondary
-                    },
-                    inactiveTintColor: colors.subText,
-                }}
-            >
-                <Tab.Screen
-                    name="Feed"
-                    component={Feed}
-                    options={{
-                        tabBarLabel: 'Home',
-                        tabBarIcon: ({ color }) => (
-                            <Feather name="home" color={color} size={28} />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Search"
-                    component={Feed}
-                    options={{
-                        tabBarLabel: 'Add',
-                        tabBarIcon: ({ color }) => (
-                            <Feather name="search" color={color} size={28} />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="AddPost"
-                    component={AddPost}
-                    options={{
-                        tabBarLabel: 'AddPost',
-                        tabBarIcon: ({ color }) => (
-                            <Feather name="plus-square" color={color} size={28} />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Notifications"
-                    component={Register}
-                    options={{
-                        tabBarLabel: 'Notifications',
-                        tabBarIcon: ({ color }) => (
-                            <Feather name="heart" color={color} size={28} />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Profile"
-                    component={LoginOrProfileScreen}
-                    options={{
-                        tabBarLabel: 'Profile',
-                        tabBarIcon: ({ color }) => (
-                            <Feather name="circle" color={color} size={28} />
-                        ),
-                    }}
-                />
-                
-            </Tab.Navigator>
-        </NavigationContainer>
-
+            <NavigationContainer >
+                <Stack.Navigator headerMode = 'none'
+                    initialRouteName = 'Login'>
+                    <Stack.Screen name="App" component={AppScreen} />
+                    <Stack.Screen name="Login" component={LoginOrRegisterScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
         </>
     );
 }

@@ -25,7 +25,7 @@ const Login: React.FC<LoginProps> = ( props ) => {
     const [ password, setPassword ] = useState('');
 
     const login = () => {
-        props.navigation.navigate('Profile');
+        props.navigation.navigate('App');
     }
     const register = () => {
         props.navigation.navigate('Register');
