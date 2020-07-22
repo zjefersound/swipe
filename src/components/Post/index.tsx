@@ -12,19 +12,7 @@ import Comment from '../Comment';
 import AddComment from '../AddComment';
 import PostInteraction from '../PostInteraction';
 
-interface CommentProps {
-    nickname: string;
-    text: string;
-}
-
-interface PostProps{
-    id: number;
-    nickname: string;
-    email: string;
-    date?: Date;
-    image: ImageProps;
-    commentList: CommentProps[];
-}
+import { PostProps } from '../../common/types';
 
 const Post: React.FC<PostProps> = ({ image, commentList, email, nickname }) => {
 

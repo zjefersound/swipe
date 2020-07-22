@@ -1,10 +1,5 @@
 import { USER_LOGGED_IN, USER_LOGGED_OUT } from '../actions/actionTypes';
-import { UserProps } from '../../common/types';
-
-interface ActionProps {
-    type: string;
-    payload?: UserProps;
-}
+import { UserProps, ActionProps } from '../../common/types';
 
 const initialState = {
     name: null,

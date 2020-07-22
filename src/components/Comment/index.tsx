@@ -9,10 +9,8 @@ import {
 
 import styles from './styles';
 
-interface CommentProps {
-    nickname: string;
-    text: string;
-}
+import { CommentProps } from '../../common/types';
+
 interface CommentList {
     comments: CommentProps[];
 }

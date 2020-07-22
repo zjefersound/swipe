@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, StatusBar, ImageProps, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 //styles
 import styles from './styles';
@@ -9,57 +10,14 @@ import colors from '../../configs/colors';
 import Header from '../../components/Header';
 import Post from '../../components/Post';
 
-interface CommentProps {
-    nickname: string;
-    text: string;
+import { PostProps, ReducerProps } from '../../common/types';
+
+interface FeedProps {
+    posts: PostProps[];
 }
 
-interface PostProps{
-    id: number;
-    nickname: string;
-    email: string;
-    date?: Date;
-    image: ImageProps;
-    commentList: CommentProps[];
-}
+const Feed: React.FC<FeedProps> = ({posts}) => {
 
-const Feed: React.FC = () => {
-    const staticPosts = [
-        {
-            id: Math.random(),
-            nickname: 'zjefersound',
-            email: 'jefe123@gmail.com',
-            image: require('../../assets/imgs/bw.jpg'),
-            commentList: [
-                {
-                    nickname: 'zika',
-                    text: 'sdsd'
-                },
-                {
-                    nickname: 'pablito',
-                    text: 'sdsd dsdddjfjdsjfsjfjdssdsmdmdmd d d d d dd  as dasdaasda jfdsjfsjfjsj jdsjfjsdfjs jsdjsjas sad a asaa'
-                },
-            ],
-        },
-        {
-            id: Math.random(),
-            nickname: 'ana',
-            email: 'ana123@gmail.com',
-            image: require('../../assets/imgs/fence.jpg'),
-            commentList: [
-                {
-                    nickname: 'merlyn',
-                    text: 'sdsd'
-                },
-                {
-                    nickname: 'gustt',
-                    text: 'sdsd dsdddjfjdsjfsjfjdssdsmdmdmd d d d d dd  as dasdaasda jfdsjfsjfjsj jdsjfjsdfjs jsdjsjas sad a asaa'
-                },
-            ],
-        },
-    ];
-    const [ posts, setPosts ] = useState<PostProps[]>(staticPosts);
-    
     return (
         <>
             <View style = { styles.background }>
@@ -77,4 +35,12 @@ const Feed: React.FC = () => {
     );
 }
 
-export default Feed;
+// export default Feed;
+
+const mapStateToProps = ({posts}: ReducerProps) => {
+    return {
+        posts: posts.posts
+    }
+}
+
+export default connect(mapStateToProps)(Feed);

@@ -18,10 +18,7 @@ import { login } from '../../store/actions/user';
 
 import { UserProps } from '../../common/types';
 
-interface LoginProps {
-    name?: string;
-    email?: string;
-    password?: string;
+interface LoginProps extends UserProps {
     navigation?: any;
     onLogin?: any;
 }
