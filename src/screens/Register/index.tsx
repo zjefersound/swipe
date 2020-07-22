@@ -27,6 +27,9 @@ const Register: React.FC<LoginProps> = ( props ) => {
     const login = () => {
         props.navigation.navigate('Profile');
     }
+    const goBack = () => {
+        props.navigation.navigate('Login');
+    }
 
     return (
         <View style = { styles.container }>
@@ -63,10 +66,13 @@ const Register: React.FC<LoginProps> = ( props ) => {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+                activeOpacity = {0.7}
+                onPress = { goBack }
+            >
                 <Text style = { styles.register }>
-                    Nao tem conta? <Text style = { styles.registerColor }>
-                        Cadastre-se </Text>
+                    Voltar para o <Text style = { styles.registerColor }>
+                        Log in </Text>
                 </Text>
             </TouchableOpacity>
         </View>

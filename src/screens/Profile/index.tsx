@@ -5,19 +5,25 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux';
+import { logout } from '../../store/actions/user';
+
 import Gravatar from '@krosben/react-native-gravatar';
 
 import Feather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 import Header from '../../components/Header';
 
-interface ProfileProps {
+import { UserProps, ReducerProps } from '../../common/types';
+
+interface ProfileProps extends UserProps {
     navigation: any;
+    onLogout: Function;
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
     const logout = () => {
-        console.log('chorou');
+        props.onLogout();
         props.navigation.navigate('Login');
     }
     const edit = () => {
@@ -25,7 +31,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
     }
 
     const gravatarOptions = {
-        email: 'jefe123@gmail.com',
+        email: props.email || '',
         size: 155
     };
 
@@ -68,7 +74,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </View>
 
                 <View style = { styles.textInfo }>
-                    <Text style = { styles.name }>Jeferson Souza</Text>
+                    <Text style = { styles.name }>{props.name}</Text>
                     <Text style = { styles.description }>
                         asdsadasd sad asd sad sa sadas das dsad sad sad sadsa dsa dsadas sa
                     </Text>
@@ -170,4 +176,19 @@ const Profile: React.FC<ProfileProps> = (props) => {
     );
 }
 
-export default Profile;
+const mapStateToProps = ({user}: ReducerProps) => {
+    return {
+        email: user.email,
+        name: user.name,
+    }
+}
+
+const mapDispatchProps = (dispatch: Function) => {
+    return {
+        onLogout: () => dispatch(logout())
+    }
+}
+
+// export default Profile;
+
+export default connect(mapStateToProps, mapDispatchProps)(Profile);
