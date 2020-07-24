@@ -34,6 +34,7 @@ const Login: React.FC<LoginProps> = ( props ) => {
     const login = () => {
         if(email && password){
             props.onLogin({ name, email, password })
+            setPassword('');
             props.navigation.navigate('App');
         } else {
             if(!email){
