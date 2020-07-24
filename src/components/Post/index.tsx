@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { 
     View,
     Image,
-    ImageProps,
-    
 } from 'react-native';
 
 import styles from './styles';
@@ -14,8 +12,9 @@ import PostInteraction from '../PostInteraction';
 
 import { PostProps } from '../../common/types';
 
-const Post: React.FC<PostProps> = ({ image, commentList, email, nickname }) => {
-
+const Post: React.FC<PostProps> = (
+    { id, image, commentList, email, nickname }
+) => {
     return (
         <View style = { styles.container }>
             <Author nickname = { nickname } email = { email } />
@@ -24,8 +23,12 @@ const Post: React.FC<PostProps> = ({ image, commentList, email, nickname }) => {
                 style = { styles.image}
             />
             <PostInteraction />
-            <Comment comments = { commentList }/>
-            <AddComment nickname = { nickname } email = { email } />
+            {commentList &&
+                <Comment comments = { commentList }/>
+            }
+            <AddComment 
+                postId = {id} 
+            />
         </View>
     );
 }

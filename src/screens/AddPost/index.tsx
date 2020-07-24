@@ -6,10 +6,8 @@ import {
     View, 
     Image, 
     Dimensions,
-    Platform,
     ScrollView,
     SafeAreaView,
-    Alert,
     TouchableOpacity,
     TextInput,
 } from 'react-native';
@@ -72,8 +70,8 @@ const AddPost: React.FC<AddPostProps> = (props) => {
     };
 
     const save = async () => {
-        const post = {
-            id: Math.random(),
+        const post: PostProps = {
+            id: String(Math.random()),
             nickname: props.name || '',
             email: props.email,
             image: image,
@@ -83,7 +81,7 @@ const AddPost: React.FC<AddPostProps> = (props) => {
                     text: comment
                 }
             ]
-        } as PostProps;
+        };
         props.onAddPost(post);
         setImage(imageInitialState);
         setComment('');

@@ -1,10 +1,12 @@
-import { ADD_POST } from '../actions/actionTypes';
+import { ADD_POST, ADD_COMMENT } from '../actions/actionTypes';
 import { PostProps, ActionProps } from '../../common/types';
-
-const initialState = {
+interface InitialStateProps {
+    posts: PostProps[];
+}
+const initialState: InitialStateProps = {
     posts: [
         {
-            id: Math.random(),
+            id: String(Math.random()),
             nickname: 'zjefersound',
             email: 'jefe123@gmail.com',
             image: require('../../../assets/imgs/bw.jpg'),
@@ -13,28 +15,33 @@ const initialState = {
                     nickname: 'zika',
                     text: 'sdsd'
                 },
+            ],
+        },
+        {
+            id: String(Math.random()),
+            nickname: 'zjefersound',
+            email: 'jefe123@gmail.com',
+            image: require('../../../assets/imgs/bw.jpg'),
+            commentList: [
                 {
-                    nickname: 'pablito',
-                    text: 'sdsd dsdddjfjdsjfsjfjdssdsmdmdmd d d d d dd  as dasdaasda jfdsjfsjfjsj jdsjfjsdfjs jsdjsjas sad a asaa'
+                    nickname: 'zika',
+                    text: 'sdsd'
                 },
             ],
         },
         {
-            id: Math.random(),
-            nickname: 'ana',
-            email: 'ana123@gmail.com',
-            image: require('../../../assets/imgs/fence.jpg'),
+            id: String(Math.random()),
+            nickname: 'zjefersound',
+            email: 'jefe123@gmail.com',
+            image: require('../../../assets/imgs/bw.jpg'),
             commentList: [
                 {
-                    nickname: 'merlyn',
+                    nickname: 'zika',
                     text: 'sdsd'
-                },
-                {
-                    nickname: 'gustt',
-                    text: 'sdsd dsdddjfjdsjfsjfjdssdsmdmdmd d d d d dd  as dasdaasda jfdsjfsjfjsj jdsjfjsdfjs jsdjsjas sad a asaa'
                 },
             ],
         },
+
     ]
 }
 
@@ -45,6 +52,20 @@ const reducer = (state = initialState, action: ActionProps) => {
                 ...state,
                 posts: state.posts.concat({
                     ...action.payload
+                })
+            };
+        case ADD_COMMENT:
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if (String(post.id) === action.payload.postId) {
+                        return {
+                            ...post,
+                            commentList: post.commentList.concat(action.payload.comment)
+                        }
+                    } else {
+                        return post;
+                    }
                 })
             };
         default: 

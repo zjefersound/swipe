@@ -24,9 +24,10 @@ const Feed: React.FC<FeedProps> = ({posts}) => {
                 <Header title = 'Swipeit' />
                 <FlatList 
                     data = { posts } 
-                    keyExtractor = {post => String(post.id)}
+                    keyExtractor = {post => post.id}
                     renderItem = { post => (
                         <Post key = {post.item.id} { ...post.item }/>
+                        // <Post { ...post.item }/>
                     )}
                 />
                     

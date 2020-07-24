@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-    Alert,
     View,
     Text,
     Modal,
@@ -8,22 +7,47 @@ import {
     SafeAreaView,
     TouchableWithoutFeedback,
 } from 'react-native';
+import { connect } from 'react-redux';
+
+import { addComment } from '../../store/actions/posts';
+import { PayloadCommentProps, ReducerProps } from '../../common/types';
+
 import Gravatar from '@krosben/react-native-gravatar';
 import Feather from 'react-native-vector-icons/Feather';
 
 import styles from './styles';
 
 interface AddCommentProps {
+    postId: string;
     email: string;
     nickname: string;
+    onAddComment: Function;
 }
 
-const AddComment: React.FC<AddCommentProps> = ({email, nickname}) => {
+const AddComment: React.FC<AddCommentProps> = (
+    { postId, email, nickname, onAddComment }
+) => {
+
     const [ comment, setComment ] = useState('');
     const [ editMode, setEditMode ] = useState(false);
 
     const handleAddComment = () => {
-        Alert.alert('Adicionado!', comment);
+        const payloadComment: PayloadCommentProps = {
+            postId: postId,
+            comment: {
+                nickname: nickname,
+                text: comment,
+            }
+        }
+
+        onAddComment({
+            postId: postId,
+            comment: {
+                nickname: nickname,
+                text: comment,
+            }
+        });
+
         setEditMode(false);
         setComment('');
     }
@@ -84,4 +108,19 @@ const AddComment: React.FC<AddCommentProps> = ({email, nickname}) => {
     );
 }
 
-export default AddComment;
+const mapStateToProps = ({user}: ReducerProps ) => {
+    return {
+        nickname: String(user.name),
+        email: user.email
+    }
+}
+
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        onAddComment: (payload: PayloadCommentProps) => dispatch(addComment(payload))
+    }
+}
+
+// export default AddComment;
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddComment);

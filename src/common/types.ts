@@ -1,5 +1,5 @@
-import { ImageProps } from 'react-native';
-import ImagePicker, { 
+// import { ImageProps } from 'react-native';
+import { 
     ImagePickerResponse, 
 } from 'react-native-image-picker';
 export interface UserProps {
@@ -7,27 +7,33 @@ export interface UserProps {
     email: string;
     password?: string;
 }
-interface PostsReducer {
-    posts: PostProps[];
-}
-export interface ReducerProps {
-    user: UserProps;
-    posts: PostsReducer;
-}
 
 export interface CommentProps {
     nickname: string;
     text: string;
 }
 
+export interface PayloadCommentProps {
+    postId: string;
+    comment: CommentProps;
+}
+
 export interface PostProps{
-    id: number;
+    id: string;
     nickname: string;
     email: string;
     date?: Date;
     // image: ImageProps;
     image: ImagePickerResponse;
     commentList: CommentProps[];
+}
+
+interface PostsReducer {
+    posts: PostProps[];
+}
+export interface ReducerProps {
+    user: UserProps;
+    posts: PostsReducer;
 }
 
 export interface ActionProps {
