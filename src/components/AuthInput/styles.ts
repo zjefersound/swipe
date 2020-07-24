@@ -12,7 +12,16 @@ const styles = StyleSheet.create({
         backgroundColor: colors.secondary2,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 24
+        paddingHorizontal: 24,
+    },
+    invalid: {
+        borderWidth: 1,
+        borderColor: colors.danger
+    },
+    invalidText: {
+        fontSize: 12,
+        marginTop: 8,
+        color: colors.danger
     },
     inputText: {
         paddingHorizontal: 16,

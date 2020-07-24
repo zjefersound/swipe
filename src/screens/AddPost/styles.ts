@@ -53,12 +53,11 @@ const styles = StyleSheet.create({
         fontFamily: fonts.roboto,
         fontSize: 16,
         width: Dimensions.get('window').width, 
-        paddingHorizontal: 20,
-        paddingVertical: 12,
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        color: colors.mainText
-
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        color: colors.mainText,
     },
     buttonSaveContainer: {
         backgroundColor: colors.secondary,
@@ -81,7 +80,15 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginLeft: 12,
 
+    },
+    invalidText: {
+        fontFamily: fonts.roboto,
+        fontSize: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        color: colors.danger,
     }
+
 });
 
 export default styles;

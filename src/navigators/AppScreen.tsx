@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Feather from 'react-native-vector-icons/Feather';
@@ -12,13 +12,22 @@ import AddPost from '../screens/AddPost';
 import Profile from '../screens/Profile';
 import { UserProps, ReducerProps } from '../common/types';
 
+interface AppScreenProps extends UserProps {
+    navigation: any;
+}
+
 const Tab = createBottomTabNavigator();
-const AppScreen = ( props: UserProps ) => {
+
+const AppScreen = ( props: AppScreenProps ) => {
     const gravatarOptions = {
         email: props.email || 'Anonymous',
         size: 50,
     };
-
+    useEffect(() => {
+        if(!props.email || !props.name){
+            props.navigation.navigate('Login')
+        }
+    },[])
     return (
         <Tab.Navigator
             initialRouteName="Feed"

@@ -27,10 +27,22 @@ const Login: React.FC<LoginProps> = ( props ) => {
     const [ name, setName ] = useState('Jeferso');
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+    
+    const [ emailError, setEmailError ] = useState('');
+    const [ passwordError, setPasswordError ] = useState('');
 
     const login = () => {
-        props.onLogin({ name, email, password })
-        props.navigation.navigate('App');
+        if(email && password){
+            props.onLogin({ name, email, password })
+            props.navigation.navigate('App');
+        } else {
+            if(!email){
+                setEmailError('Preencha o email');
+            }
+            if(!password){
+                setPasswordError('Preencha a senha');
+            }
+        }
     }
     const register = () => {
         props.navigation.navigate('Register');
@@ -46,14 +58,22 @@ const Login: React.FC<LoginProps> = ( props ) => {
                 autoFocus
                 keyboardType = 'email-address'
                 value = { email }
-                onChangeText = { text => setEmail(text)}
+                message = { emailError }
+                onChangeText = { text => {
+                    setEmailError('');
+                    return setEmail(text);
+                }}
             />
             <AuthInput 
                 name = 'key'
                 placeholder = 'Password'  
                 secureTextEntry
                 value = { password }
-                onChangeText = { text => setPassword(text)}
+                message = { passwordError }
+                onChangeText = { text => {
+                    setPasswordError('');
+                    return setPassword(text);
+                }}
             />
             <TouchableOpacity 
                 activeOpacity = {0.7}

@@ -10,6 +10,7 @@ import {
     SafeAreaView,
     TouchableOpacity,
     TextInput,
+    Alert,
 } from 'react-native';
 import ImagePicker, { 
     ImagePickerResponse, 
@@ -39,6 +40,9 @@ const imageInitialState = {
 }
 
 const AddPost: React.FC<AddPostProps> = (props) => {
+    const [imageError, setImageError] = useState('');
+    const [descriptionError, setDescriptionError] = useState('');
+
     const [ image, setImage ] = useState<ImagePickerResponse>({
         ...imageInitialState
     });
@@ -64,13 +68,14 @@ const AddPost: React.FC<AddPostProps> = (props) => {
         } else {
             let source = response;
             setImage(source);
+            setImageError('');
         }
         });
     
     };
 
     const save = async () => {
-        const post: PostProps = {
+        const post: PostProps = await {
             id: String(Math.random()),
             nickname: props.name || '',
             email: props.email,
@@ -82,10 +87,20 @@ const AddPost: React.FC<AddPostProps> = (props) => {
                 }
             ]
         };
-        props.onAddPost(post);
-        setImage(imageInitialState);
-        setComment('');
-        props.navigation.navigate('Feed');
+        if (post.image.fileSize == 0){
+            setImageError('Insira uma imagem!');
+        }
+        if (!comment) {
+            setDescriptionError('Digite uma descrição!');
+        }
+        
+        if (post.image.fileSize > 0 
+            && comment) {
+            props.onAddPost(post);
+            setImage(imageInitialState);
+            setComment('');
+            props.navigation.navigate('Feed');     
+        }
     }
 
     return (
@@ -114,6 +129,11 @@ const AddPost: React.FC<AddPostProps> = (props) => {
                 )
                 }
             </TouchableOpacity>
+            { 
+                    imageError
+                    ? <Text style = { styles.invalidText }>{imageError}</Text>
+                    : null
+                }
             <TouchableOpacity 
                 onPress = { chooseFile }
                 style = { styles.buttonAddImage }
@@ -126,9 +146,17 @@ const AddPost: React.FC<AddPostProps> = (props) => {
                 <Text style = { styles.buttonAddImageText }>Adicione a imagem</Text>
             </TouchableOpacity>
             <SafeAreaView style = { styles.inputTextContainer }>
+                { 
+                    descriptionError
+                    ? <Text style = { styles.invalidText }>{descriptionError}</Text>
+                    : null
+                }
                 <TextInput 
                     value = { comment }
-                    onChangeText = { text => setComment(text) }
+                    onChangeText = { text => {
+                        setDescriptionError('')
+                        return setComment(text)
+                    } }
                     multiline
                     style = { styles.inputText } 
                     placeholderTextColor = { colors.subText }
